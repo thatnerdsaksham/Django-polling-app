@@ -1,0 +1,128 @@
+[
+{
+  "model": "polls.question",
+  "pk": 1,
+  "fields": {
+    "question_text": "Which programming language do you prefer for back-end development?",
+    "pub_date": "2026-10-18T16:54:21.139Z",
+    "is_active": true
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 2,
+  "fields": {
+    "question_text": "What is the best time for the weekly class?",
+    "pub_date": "2026-10-19T16:54:21.150Z",
+    "is_active": true
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 3,
+  "fields": {
+    "question_text": "Which Django feature do you find most useful?",
+    "pub_date": "2026-10-20T16:54:21.156Z",
+    "is_active": true
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 1,
+  "fields": {
+    "question": 1,
+    "choice_text": "Python",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 2,
+  "fields": {
+    "question": 1,
+    "choice_text": "Java",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 3,
+  "fields": {
+    "question": 1,
+    "choice_text": "JavaScript (Node.js)",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 4,
+  "fields": {
+    "question": 1,
+    "choice_text": "C++",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 5,
+  "fields": {
+    "question": 2,
+    "choice_text": "Morning",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 6,
+  "fields": {
+    "question": 2,
+    "choice_text": "Afternoon",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 7,
+  "fields": {
+    "question": 2,
+    "choice_text": "Evening",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 8,
+  "fields": {
+    "question": 3,
+    "choice_text": "ORM and migrations",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 9,
+  "fields": {
+    "question": 3,
+    "choice_text": "Admin site",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 10,
+  "fields": {
+    "question": 3,
+    "choice_text": "Template system",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 11,
+  "fields": {
+    "question": 3,
+    "choice_text": "Built-in authentication",
+    "votes": 0
+  }
+}
+]
