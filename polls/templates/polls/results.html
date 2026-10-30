@@ -1,0 +1,16 @@
+{% extends 'polls/base.html' %}
+{% block title %}Results{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h2>{{ question.question_text }}</h2>
+    {% for row in rows %}
+      <div>{{ row.text }} &mdash; <strong>{{ row.votes }}</strong> vote{{ row.votes|pluralize }} ({{ row.percent }}%)</div>
+      <div class="bar-wrap"><div class="bar" style="width: {{ row.percent }}%"></div></div>
+    {% empty %}
+      <p>This poll has no choices yet.</p>
+    {% endfor %}
+    <p class="muted">Total votes: {{ total }}</p>
+    <a class="btn secondary" href="{% url 'polls:index' %}">Back to polls</a>
+  </div>
+{% endblock %}

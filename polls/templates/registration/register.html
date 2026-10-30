@@ -1,0 +1,14 @@
+{% extends 'polls/base.html' %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h2>Create an account</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn">Register</button>
+    </form>
+    <p class="muted">Already registered? <a href="{% url 'login' %}">Login</a></p>
+  </div>
+{% endblock %}

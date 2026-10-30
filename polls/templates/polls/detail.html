@@ -1,0 +1,18 @@
+{% extends 'polls/base.html' %}
+{% block title %}{{ question.question_text }}{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h2>{{ question.question_text }}</h2>
+    <form method="post">
+      {% csrf_token %}  {# CSRF protection: Django rejects the POST without this token #}
+      {{ form.non_field_errors }}
+      {% for radio in form.choice %}
+        <div class="choice">{{ radio.tag }}<label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label></div>
+      {% endfor %}
+      {{ form.choice.errors }}
+      <p><button type="submit" class="btn">Vote</button>
+         <a class="btn secondary" href="{% url 'polls:index' %}">Back</a></p>
+    </form>
+  </div>
+{% endblock %}

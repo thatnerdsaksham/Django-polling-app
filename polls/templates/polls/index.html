@@ -1,0 +1,16 @@
+{% extends 'polls/base.html' %}
+{% block title %}All Polls{% endblock %}
+
+{% block content %}
+  <h1>Available Polls</h1>
+  {% for question in questions %}
+    <div class="card">
+      <h3>{{ question.question_text }}</h3>
+      <p class="muted">Published {{ question.pub_date|date:"d M Y" }} &middot; {{ question.total_votes }} vote{{ question.total_votes|pluralize }}</p>
+      <a class="btn" href="{% url 'polls:detail' question.id %}">Vote</a>
+      <a class="btn secondary" href="{% url 'polls:results' question.id %}">Results</a>
+    </div>
+  {% empty %}
+    <p>No polls available yet. An admin can add some from the admin panel.</p>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Polls{% endblock %}</title>
+  <style>
+    :root { --accent: #2f6fdb; --bg: #f5f7fb; --card: #fff; --text: #1f2937; --muted: #6b7280; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, Arial, sans-serif; background: var(--bg); color: var(--text); margin: 0; }
+    nav { background: var(--card); border-bottom: 1px solid #e5e7eb; padding: 12px 20px;
+          display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    nav .brand { font-weight: 700; margin-right: auto; }
+    nav a, .link-btn { color: var(--accent); text-decoration: none; }
+    nav form { display: inline; margin: 0; }
+    .link-btn { background: none; border: none; cursor: pointer; font: inherit; padding: 0; }
+    main { max-width: 680px; margin: 28px auto; padding: 0 16px; }
+    .card { background: var(--card); border-radius: 10px; padding: 18px 20px; margin-bottom: 14px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    .card h3, h1, h2 { margin-top: 0; }
+    .btn { display: inline-block; background: var(--accent); color: #fff; border: none; border-radius: 6px;
+           padding: 8px 16px; cursor: pointer; text-decoration: none; font: inherit; }
+    .btn.secondary { background: #e5e7eb; color: var(--text); }
+    .muted { color: var(--muted); font-size: .9em; }
+    .msg { padding: 10px 14px; border-radius: 6px; margin-bottom: 12px; }
+    .msg.success { background: #d1fae5; } .msg.info { background: #dbeafe; } .msg.error { background: #fee2e2; }
+    .errorlist { color: #b91c1c; list-style: none; padding: 0; margin: 6px 0; }
+    .choice { padding: 8px 0; } .choice label { margin-left: 6px; cursor: pointer; }
+    .bar-wrap { background: #e5e7eb; border-radius: 6px; height: 16px; overflow: hidden; margin: 4px 0 12px; }
+    .bar { background: var(--accent); height: 100%; }
+    form p { margin: 10px 0; } form input[type=text], form input[type=password] { padding: 7px; width: 100%; max-width: 320px; }
+    .helptext { display: block; color: var(--muted); font-size: .8em; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="{% url 'polls:index' %}">Polling App</a>
+    {% if user.is_authenticated %}
+      <span class="muted">Signed in as {{ user.username }}</span>
+      {% if user.is_staff %}<a href="{% url 'admin:index' %}">Admin</a>{% endif %}
+      <!-- Logout must be a POST request in current Django versions -->
+      <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="link-btn">Logout</button>
+      </form>
+    {% else %}
+      <a href="{% url 'login' %}">Login</a>
+      <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+  </nav>
+
+  <main>
+    {% for message in messages %}
+      <div class="msg {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
